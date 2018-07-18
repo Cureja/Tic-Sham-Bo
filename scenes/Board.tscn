@@ -1,0 +1,87 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/Board.gd" type="Script" id=1]
+[ext_resource path="res://scenes/RPS_pair.tscn" type="PackedScene" id=2]
+
+[node name="Board" type="Node" index="0"]
+
+script = ExtResource( 1 )
+
+[node name="Game" type="Node2D" parent="." index="0"]
+
+position = Vector2( 178, 300 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="RPS_pair" parent="Game" index="0" instance=ExtResource( 2 )]
+
+_sections_unfolded = [ "Transform" ]
+
+[node name="RPS_pair2" parent="Game" index="1" instance=ExtResource( 2 )]
+
+position = Vector2( 166, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="RPS_pair3" parent="Game" index="2" instance=ExtResource( 2 )]
+
+position = Vector2( 333, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="RPS_pair4" parent="Game" index="3" instance=ExtResource( 2 )]
+
+position = Vector2( 500, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="RPS_pair5" parent="Game" index="4" instance=ExtResource( 2 )]
+
+position = Vector2( 666, 0 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Player1_Score" type="Label" parent="." index="1"]
+
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50.0
+margin_top = -63.0
+margin_right = 50.0
+margin_bottom = -24.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "0"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+[node name="Player2_Score" type="Label" parent="." index="2"]
+
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -50.0
+margin_top = -566.0
+margin_right = 50.0
+margin_bottom = -527.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "0"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Margin" ]
+
+
