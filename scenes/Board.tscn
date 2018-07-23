@@ -1,112 +1,387 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/Board.gd" type="Script" id=1]
 [ext_resource path="res://images/bg.png" type="Texture" id=2]
-[ext_resource path="res://scenes/RPS_pair.tscn" type="PackedScene" id=3]
+[ext_resource path="res://font/Comfortaa-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://scenes/RPS_Pair.tscn" type="PackedScene" id=4]
+
+[sub_resource type="DynamicFontData" id=2]
+
+hinting = 2
+font_path = "res://font/Comfortaa-Bold.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+
+size = 64
+use_mipmaps = false
+use_filter = false
+font_data = SubResource( 2 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 64
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=4]
+
+size = 64
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 3 )
+_sections_unfolded = [ "Settings" ]
 
 [node name="Board" type="Node" index="0"]
 
 script = ExtResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="." index="0"]
+[node name="UI" type="Control" parent="." index="0"]
 
-position = Vector2( 506.016, 296.391 )
-scale = Vector2( 8.0315, 4.68688 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="Background" type="Sprite" parent="UI" index="0"]
+
+position = Vector2( 2329.99, 1252.15 )
+scale = Vector2( 50.4282, 29.3296 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Offset", "Region", "Transform" ]
 
-[node name="Player1_Score" type="Label" parent="." index="1"]
-
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-margin_left = -224.0
-margin_top = -20.0
-margin_bottom = 20.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-text = "0"
-align = 1
-valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect" ]
-
-[node name="Player2_Score" type="Label" parent="." index="2"]
+[node name="MarginContainer" type="MarginContainer" parent="UI" index="1"]
 
 anchor_left = 0.0
-anchor_top = 0.5
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/margin_right = 20
+custom_constants/margin_top = 20
+custom_constants/margin_left = 20
+custom_constants/margin_bottom = 20
+_sections_unfolded = [ "Anchor", "Margin", "custom_constants" ]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
 anchor_right = 0.0
-anchor_bottom = 0.5
-margin_top = -20.0
-margin_right = 224.0
-margin_bottom = 20.0
+anchor_bottom = 0.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 1004.0
+margin_bottom = 580.0
+rect_min_size = Vector2( 600, 0 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+alignment = 1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_constants" ]
+
+[node name="Time" type="Label" parent="UI/MarginContainer/VBoxContainer" index="0"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 984.0
+margin_bottom = 72.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
+size_flags_vertical = 3
+custom_fonts/font = SubResource( 3 )
+text = "5"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/MarginContainer/VBoxContainer/Time" index="0"]
+
+root_node = NodePath("../Label")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+blend_times = [  ]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 76.0
+margin_right = 984.0
+margin_bottom = 556.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 3
+alignment = 1
+_sections_unfolded = [ "Rect", "Size Flags" ]
+
+[node name="Player1_Score" type="Label" parent="UI/MarginContainer/VBoxContainer/HBoxContainer" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 200.0
+margin_right = 188.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 150, 80 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
 size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
 text = "0"
 align = 1
 valign = 1
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Size Flags" ]
 
-[node name="Game" type="Node2D" parent="." index="3"]
+[node name="Game" type="Control" parent="UI/MarginContainer/VBoxContainer/HBoxContainer" index="1"]
 
-position = Vector2( 512, 300 )
-_sections_unfolded = [ "Material", "Transform" ]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 192.0
+margin_right = 792.0
+margin_bottom = 480.0
+rect_min_size = Vector2( 600, 480 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+_sections_unfolded = [ "Rect", "Size Flags" ]
 
-[node name="RPS_pair1" parent="Game" index="0" instance=ExtResource( 3 )]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Game" index="0"]
 
-position = Vector2( -200, 100 )
-_sections_unfolded = [ "Transform" ]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+alignment = 1
+_sections_unfolded = [ "Rect", "Size Flags", "custom_constants" ]
 
-[node name="RPS_pair2" parent="Game" index="1" instance=ExtResource( 3 )]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Game/VBoxContainer" index="0"]
 
-position = Vector2( 0, 100 )
-_sections_unfolded = [ "Transform" ]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 600.0
+margin_bottom = 157.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 3
+custom_constants/separation = 40
+alignment = 1
+_sections_unfolded = [ "Size Flags" ]
 
-[node name="RPS_pair3" parent="Game" index="2" instance=ExtResource( 3 )]
+[node name="RPS_Pair1" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Game/VBoxContainer/HBoxContainer" index="0" instance=ExtResource( 4 )]
 
-position = Vector2( 200, 100 )
-_sections_unfolded = [ "Transform" ]
+margin_left = 20.0
+margin_top = 0.0
+margin_right = 180.0
+margin_bottom = 157.0
+_sections_unfolded = [ "Margin", "Rect", "Size Flags", "Transform" ]
 
-[node name="RPS_pair4" parent="Game" index="3" instance=ExtResource( 3 )]
+[node name="RPS_Pair2" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Game/VBoxContainer/HBoxContainer" index="1" instance=ExtResource( 4 )]
 
-position = Vector2( -200, 0 )
-_sections_unfolded = [ "Transform" ]
+margin_left = 220.0
+margin_top = 0.0
+margin_right = 380.0
+margin_bottom = 157.0
+_sections_unfolded = [ "Margin", "Rect", "Transform" ]
 
-[node name="RPS_pair5" parent="Game" index="4" instance=ExtResource( 3 )]
+[node name="RPS_Pair3" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Game/VBoxContainer/HBoxContainer" index="2" instance=ExtResource( 4 )]
 
-_sections_unfolded = [ "Transform" ]
+margin_left = 420.0
+margin_top = 0.0
+margin_right = 580.0
+margin_bottom = 157.0
+_sections_unfolded = [ "Margin", "Rect", "Transform" ]
 
-[node name="RPS_pair6" parent="Game" index="5" instance=ExtResource( 3 )]
+[node name="HBoxContainer2" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Game/VBoxContainer" index="1"]
 
-position = Vector2( 200, 0 )
-_sections_unfolded = [ "Transform" ]
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 161.0
+margin_right = 600.0
+margin_bottom = 318.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 3
+custom_constants/separation = 40
+alignment = 1
+_sections_unfolded = [ "Size Flags" ]
 
-[node name="RPS_pair7" parent="Game" index="6" instance=ExtResource( 3 )]
+[node name="RPS_Pair4" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Game/VBoxContainer/HBoxContainer2" index="0" instance=ExtResource( 4 )]
 
-position = Vector2( -200, -100 )
-_sections_unfolded = [ "Transform" ]
+margin_left = 20.0
+margin_top = 0.0
+margin_right = 180.0
+margin_bottom = 157.0
+_sections_unfolded = [ "Margin", "Rect", "Transform" ]
 
-[node name="RPS_pair8" parent="Game" index="7" instance=ExtResource( 3 )]
+[node name="RPS_Pair5" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Game/VBoxContainer/HBoxContainer2" index="1" instance=ExtResource( 4 )]
 
-position = Vector2( -1.50735, -98.4927 )
-_sections_unfolded = [ "Transform" ]
+margin_left = 220.0
+margin_top = 0.0
+margin_right = 380.0
+margin_bottom = 157.0
+_sections_unfolded = [ "Margin", "Rect", "Transform" ]
 
-[node name="RPS_pair9" parent="Game" index="8" instance=ExtResource( 3 )]
+[node name="RPS_Pair6" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Game/VBoxContainer/HBoxContainer2" index="2" instance=ExtResource( 4 )]
 
-position = Vector2( 200, -100 )
-_sections_unfolded = [ "Transform" ]
+margin_left = 420.0
+margin_top = 0.0
+margin_right = 580.0
+margin_bottom = 157.0
+_sections_unfolded = [ "Margin", "Rect", "Transform" ]
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Game/VBoxContainer" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 322.0
+margin_right = 600.0
+margin_bottom = 480.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 3
+custom_constants/separation = 40
+alignment = 1
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="RPS_Pair7" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Game/VBoxContainer/HBoxContainer3" index="0" instance=ExtResource( 4 )]
+
+margin_left = 20.0
+margin_top = 0.0
+margin_right = 180.0
+margin_bottom = 158.0
+_sections_unfolded = [ "Margin", "Rect", "Transform" ]
+
+[node name="RPS_Pair8" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Game/VBoxContainer/HBoxContainer3" index="1" instance=ExtResource( 4 )]
+
+margin_left = 220.0
+margin_top = 0.0
+margin_right = 380.0
+margin_bottom = 158.0
+_sections_unfolded = [ "Margin", "Rect", "Transform" ]
+
+[node name="RPS_Pair9" parent="UI/MarginContainer/VBoxContainer/HBoxContainer/Game/VBoxContainer/HBoxContainer3" index="2" instance=ExtResource( 4 )]
+
+margin_left = 420.0
+margin_top = 0.0
+margin_right = 580.0
+margin_bottom = 158.0
+_sections_unfolded = [ "Margin", "Rect", "Transform" ]
+
+[node name="Player2_Score" type="Label" parent="UI/MarginContainer/VBoxContainer/HBoxContainer" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 796.0
+margin_top = 200.0
+margin_right = 984.0
+margin_bottom = 280.0
+rect_min_size = Vector2( 150, 80 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+text = "0"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Rect", "Size Flags", "custom_fonts" ]
+
+[node name="Control" type="Control" parent="UI/MarginContainer/VBoxContainer" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 560.0
+margin_right = 984.0
+margin_bottom = 560.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 3
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="Round_Timer" type="Timer" parent="." index="1"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = true
+autostart = false
 
 
