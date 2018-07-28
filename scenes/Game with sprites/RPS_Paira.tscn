@@ -2,7 +2,8 @@
 
 [ext_resource path="res://scripts/RPS_Pair.gd" type="Script" id=1]
 [ext_resource path="res://images/light.png" type="Texture" id=2]
-[ext_resource path="res://scenes/RPS.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/Game with sprites/RPSa.tscn" type="PackedScene" id=3]
+
 
 [node name="RPS_pair" type="Control"]
 
@@ -10,24 +11,25 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = -80.0
-margin_top = -32.0
-margin_right = 80.0
-margin_bottom = 32.0
-rect_min_size = Vector2( 160, 64 )
-rect_pivot_offset = Vector2( 80, 32 )
+margin_left = -140.0
+margin_top = -54.0
+margin_right = 140.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 280, 108 )
+rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
 script = ExtResource( 1 )
-_sections_unfolded = [ "Margin", "Rect" ]
+_sections_unfolded = [ "Anchor", "Rect" ]
 
 [node name="Light2D" type="Light2D" parent="." index="0"]
 
 visible = false
-scale = Vector2( 0.5, 0.5 )
+position = Vector2( 640, 216 )
+scale = Vector2( 0.1, 0.1 )
 enabled = true
 editor_only = false
 texture = ExtResource( 2 )
@@ -56,8 +58,8 @@ _sections_unfolded = [ "Range", "Shadow", "Transform" ]
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 0.0
-margin_right = 64.0
-rect_rotation = 90.0
+margin_right = 144.0
+rect_scale = Vector2( 1, 1 )
 
 [node name="Hand2" parent="." index="2" instance=ExtResource( 3 )]
 
@@ -65,8 +67,8 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -64.0
+margin_left = -144.0
 margin_right = 0.0
-rect_rotation = -90.0
+rect_scale = Vector2( -1, 1 )
 
 
