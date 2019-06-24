@@ -46,11 +46,13 @@ func _on_Timer_timeout():
 	for pair in get_tree().get_nodes_in_group("RPS_Pairs"):
 		pair.set_paused(true)
 	pass
+	round_end_bonus();
 
 func round_end_bonus():
 	var game_state = []
+	game_state.resize(10)
 	for a in range(9):
-		game_state[a+1] = board[a+1].get_winner()
+		game_state[a+1] = board[a].get_winner()
 
 	for b in range(3):
 		check_line(game_state, 1+b*3, 1)
@@ -60,7 +62,8 @@ func round_end_bonus():
 	check_line(game_state, 3,2)
 
 func check_line(var game_state, var start, var offset):
-	var line
+	var line = [];
+	line.resize(3);
 	for a in range(3):
 		line[a] = game_state[start+(a*offset)]
 	
